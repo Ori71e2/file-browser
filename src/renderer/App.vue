@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'file-browser'
-  }
+export default {
+  name: 'file-browser'
+}
 </script>
 
 <style>

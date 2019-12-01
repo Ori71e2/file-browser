@@ -2,7 +2,6 @@ import Vue from 'vue'
 import axios from 'axios'
 
 import Element from 'element-ui'
-import './styles/element-variables.scss'
 
 import '@/styles/index.scss' // global css
 
