@@ -23,11 +23,13 @@ function createWindow () {
     height: 563,
     useContentSize: true,
     width: 1000,
+    frame: false,
+    titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true // add this，因为electron自5.0后默认不允许在web页面中使用中nodejs API，本项目模板中使用了nodejs API，页面会白屏
     }
   })
-
+  mainWindow.show()
   mainWindow.loadURL(winURL)
 
   mainWindow.on('closed', () => {

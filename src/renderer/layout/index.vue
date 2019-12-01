@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div  style="-webkit-app-region: drag" class="header">
+    <div style="-webkit-app-region: drag" id="header">
       <p>Welcome</p>
     </div>
     <div id="wrapper">
@@ -10,24 +10,6 @@
           <span class="title">
             Welcome to your new project!
           </span>
-          <system-information></system-information>
-        </div>
-
-        <div class="right-side">
-          <div class="doc">
-            <div class="title">Getting Started</div>
-            <p>
-              electron-vue comes packed with detailed documentation that covers everything from
-              internal configurations, using the project structure, building your application,
-              and so much more.
-            </p>
-            <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
-          </div>
-          <div class="doc">
-            <div class="title alt">Other Documentation</div>
-            <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
-            <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
-          </div>
         </div>
       </main>
     </div>
@@ -35,15 +17,10 @@
 </template>
 
 <script>
-import SystemInformation from './LandingPage/SystemInformation'
 
 export default {
-  name: 'landing-page',
-  components: { SystemInformation },
+  name: 'layout',
   methods: {
-    open (link) {
-      this.$electron.shell.openExternal(link)
-    }
   }
 }
 </script>
@@ -58,7 +35,11 @@ export default {
   }
 
   body { font-family: 'Source Sans Pro', sans-serif; }
-
+  #header {
+    height: 30px;
+    width: 100%;
+    background-color: #DCDFE6;
+  }
   #wrapper {
     background:
       radial-gradient(
@@ -66,7 +47,7 @@ export default {
         rgba(255, 255, 255, 1) 40%,
         rgba(229, 229, 229, .9) 100%
       );
-    height: 100vh;
+    height: calc(100vh - 30px);
     padding: 60px 80px;
     width: 100vw;
   }
@@ -75,10 +56,6 @@ export default {
     height: auto;
     margin-bottom: 20px;
     width: 420px;
-  }
-  .header {
-    height: 20px;
-    width: 100%;
   }
   main {
     display: flex;
