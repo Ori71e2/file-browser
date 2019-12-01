@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import axios from 'axios'
 
+import Element from 'element-ui'
+import './styles/element-variables.scss'
+
+import '@/styles/index.scss' // global css
+
 import App from './App'
 import router from './router'
 import store from './store'

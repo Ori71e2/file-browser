@@ -31,6 +31,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "vuex-electron": "^1.0.0",
+    "element-ui": "2.7.0",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0"
   },
@@ -82,7 +83,6 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.0.0",
     "mini-css-extract-plugin": "0.8.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
