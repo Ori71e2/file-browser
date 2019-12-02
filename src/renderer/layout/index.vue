@@ -1,7 +1,13 @@
 <template>
   <div>
     <div style="-webkit-app-region: drag" id="header">
-      <p>Welcome</p>
+      <div>
+        <p>Welcome</p>
+      </div>
+      <div>
+        <svg-icon class-name="square-icon" icon-class="square"></svg-icon>
+        <svg-icon class-name="square-icon" icon-class="cross"></svg-icon>
+      </div>
     </div>
     <div id="wrapper">
       <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
@@ -38,7 +44,10 @@ export default {
   #header {
     height: 30px;
     width: 100%;
-    background-color: #DCDFE6;
+    /* background-color: #DCDFE6; */
+  }
+  #header div {
+    display: inline-block;
   }
   #wrapper {
     background:
@@ -63,7 +72,11 @@ export default {
   }
 
   main > div { flex-basis: 50%; }
-
+  .square-icon {
+    font-size: 20px;
+    cursor: pointer;
+    vertical-align: -4px!important;
+  }
   .left-side {
     display: flex;
     flex-direction: column;
