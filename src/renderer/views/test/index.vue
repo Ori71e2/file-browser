@@ -1,14 +1,7 @@
 <template>
   <div>
-    <div style="-webkit-app-region: drag" id="header">
-      <div>
-        <p>Welcome</p>
-      </div>
-      <div>
-        <svg-icon class-name="square-icon" icon-class="minimize"></svg-icon>
-        <svg-icon class-name="square-icon" icon-class="maximize"></svg-icon>
-        <svg-icon class-name="square-icon" icon-class="close"></svg-icon>
-      </div>
+    <div  style="-webkit-app-region: drag" class="header">
+      <p>Welcome</p>
     </div>
     <div id="wrapper">
       <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
@@ -18,6 +11,23 @@
             Welcome to your new project!
           </span>
         </div>
+
+        <div class="right-side">
+          <div class="doc">
+            <div class="title">Getting Started</div>
+            <p>
+              electron-vue comes packed with detailed documentation that covers everything from
+              internal configurations, using the project structure, building your application,
+              and so much more.
+            </p>
+            <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
+          </div>
+          <div class="doc">
+            <div class="title alt">Other Documentation</div>
+            <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
+            <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
+          </div>
+        </div>
       </main>
     </div>
   </div>
@@ -26,7 +36,7 @@
 <script>
 
 export default {
-  name: 'layout',
+  name: 'test-page',
   methods: {
   }
 }
@@ -42,14 +52,7 @@ export default {
   }
 
   body { font-family: 'Source Sans Pro', sans-serif; }
-  #header {
-    height: 30px;
-    width: 100%;
-    /* background-color: #DCDFE6; */
-  }
-  #header div {
-    display: inline-block;
-  }
+
   #wrapper {
     background:
       radial-gradient(
@@ -57,7 +60,7 @@ export default {
         rgba(255, 255, 255, 1) 40%,
         rgba(229, 229, 229, .9) 100%
       );
-    height: calc(100vh - 30px);
+    height: 100vh;
     padding: 60px 80px;
     width: 100vw;
   }
@@ -67,17 +70,17 @@ export default {
     margin-bottom: 20px;
     width: 420px;
   }
+  .header {
+    height: 20px;
+    width: 100%;
+  }
   main {
     display: flex;
     justify-content: space-between;
   }
 
   main > div { flex-basis: 50%; }
-  .square-icon {
-    font-size: 20px;
-    cursor: pointer;
-    vertical-align: -4px!important;
-  }
+
   .left-side {
     display: flex;
     flex-direction: column;
