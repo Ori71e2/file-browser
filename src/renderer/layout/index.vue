@@ -1,13 +1,13 @@
 <template>
   <div>
     <div style="-webkit-app-region: drag" id="header">
-      <div>
+      <div id="window-panel">
         <p>Welcome</p>
       </div>
-      <div>
-        <svg-icon class-name="square-icon" icon-class="minimize"></svg-icon>
-        <svg-icon class-name="square-icon" icon-class="maximize"></svg-icon>
-        <svg-icon class-name="square-icon" icon-class="close"></svg-icon>
+      <div id="window-control" class>
+        <div v-on:click="onActionMenuClick('minimize')"><svg-icon class-name="square-icon" icon-class="minimize"></svg-icon></div>
+        <div v-on:click="onActionMenuClick('maximize')"><svg-icon class-name="square-icon" icon-class="maximize"></svg-icon></div>
+        <div v-on:click="onActionMenuClick('close')"><svg-icon class-name="square-icon" icon-class="close"></svg-icon></div>
       </div>
     </div>
     <div id="wrapper">
@@ -24,10 +24,15 @@
 </template>
 
 <script>
-
+import { ipcRenderer } from 'electron'
+import Message from '@/../utils/message.js'
 export default {
   name: 'layout',
   methods: {
+    onActionMenuClick(menuType) {
+      console.log('xx')
+      ipcRenderer.send('main', new Message('frameController', menuType))
+    }
   }
 }
 </script>
@@ -45,10 +50,37 @@ export default {
   #header {
     height: 30px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
     /* background-color: #DCDFE6; */
   }
   #header div {
+    position: relative;
     display: inline-block;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  #window-panel {
+    flex-shrink: 0;
+    width: 60px;
+  }
+  #window-control {
+    flex-shrink: 0;
+    width: 100px;
+  }
+  #window-control {
+    -webkit-app-region: no-drag;
+  }
+  #window-control div:nth-child(1) {
+    margin-right: 25px;
+  }
+  #window-control div:nth-child(3) {
+    margin-left: 25px;
+  }
+  .square-icon {
+    font-size: 10px;
+    cursor: pointer;
+    vertical-align: -4px!important;
   }
   #wrapper {
     background:
@@ -73,11 +105,7 @@ export default {
   }
 
   main > div { flex-basis: 50%; }
-  .square-icon {
-    font-size: 20px;
-    cursor: pointer;
-    vertical-align: -4px!important;
-  }
+
   .left-side {
     display: flex;
     flex-direction: column;
