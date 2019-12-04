@@ -1,6 +1,7 @@
 'use strict'
 
 import { app, BrowserWindow, ipcMain } from 'electron'
+import Message from '@/../utils/message.js'
 
 const path = require('path')
 const glob = require('glob')
@@ -39,7 +40,7 @@ function initialize() {
     mainWindow.loadURL(winURL)
 
     addIpcListener()
-
+    addWindowListener()
     mainWindow.on('closed', () => {
       mainWindow = null
     })
@@ -126,15 +127,16 @@ function frameController(e, data) {
   }
 }
 
-// function addWindowListener() {
-//   // 添加全屏事件监听
-//   mainWindow.on('maximize', (e) => {
-//     e.sender.send('main-relpy', new Message('maximize', true))
-//   })
-//   // 添加还原全屏事件监听
-//   mainWindow.on('unmaximize', (e) => {
-//     e.sender.send('main-relpy', new Message('maximize', false))
-//   })
-// }
-
+function addWindowListener() {
+  // 添加全屏事件监听
+  mainWindow.on('maximize', (e) => {
+    console.log('maxmize')
+    e.sender.send('main-relpy', new Message('maximize', true))
+  })
+  // 添加还原全屏事件监听
+  mainWindow.on('unmaximize', (e) => {
+    console.log('unmaxmize')
+    e.sender.send('main-relpy', new Message('unmaxmize', false))
+  })
+}
 initialize()

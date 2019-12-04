@@ -18,6 +18,7 @@
             Welcome to your new project!
           </span>
         </div>
+        <router-view :key="key"></router-view>
       </main>
     </div>
   </div>
@@ -26,12 +27,26 @@
 <script>
 import { ipcRenderer } from 'electron'
 import Message from '@/../utils/message.js'
+import { constants } from 'fs'
 export default {
   name: 'layout',
+  mounted() {
+    this.addIpcListener()
+  },
   methods: {
     onActionMenuClick(menuType) {
-      console.log('xx')
       ipcRenderer.send('main', new Message('frameController', menuType))
+    },
+    addIpcListener() {
+      ipcRenderer.on('main-relpy', (e, { action, data }, arg) => {
+        console.log(action)
+        if (action === 'maximize') {
+          // 由于本人的项目使用了 vue 所以只进行了数据的修改。
+          // 实际操作根据自己架构情况来实现
+          // this.maximizeMenu.name = data ? 'md-contract' : 'md-expand'
+          console.log(action)
+        }
+      })
     }
   }
 }
