@@ -89,6 +89,9 @@ let mainConfig = {
     ** Attempt to resolve these extensions in order.
     ** If multiple files share the same name but have different extensions, webpack will resolve the one with the extension listed first in the array and skip the rest.
     */
+   alias: {
+    '@': path.join(__dirname, '../src/main'),
+    },
     extensions: ['.js', '.json', '.node']
   },
   /*
