@@ -1,8 +1,34 @@
 <template>
   <div>
-    <div style="-webkit-app-region: drag" id="header">
+    <div id="header">
       <div id="window-panel">
-        <p>Welcome</p>
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus-outline">螺蛳粉</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check">蚵仔煎</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus-outline">螺蛳粉</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check">蚵仔煎</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+      <div id="window-search">
+        <el-input size="mini" placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchInput"></el-input>
       </div>
       <div id="window-control" class>
         <div v-on:click="onActionMenuClick('minimize')"><svg-icon class-name="square-icon" icon-class="minimize"></svg-icon></div>
@@ -32,7 +58,8 @@ export default {
   name: 'layout',
   data() {
     return {
-      isMaximize: false
+      isMaximize: false,
+      searchInput: ''
     }
   },
   mounted() {
@@ -69,47 +96,86 @@ export default {
 
 <style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  $header-height: 32px;
+  $header-background-color: #DCDFE6;
+  $window-panel-width: 400px;
+  $window-control-width: 100px;
+  $window-search-width: $window-panel-width + $window-control-width;
+  @mixin only-click {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
   }
-
-  #header {
-    height: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    /* background-color: #DCDFE6; */
-  }
-  #header div {
+  @mixin vertical-center {
     position: relative;
     display: inline-block;
     top: 50%;
     transform: translateY(-50%);
   }
+  #header {
+    -webkit-app-region: drag;
+    height: $header-height;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $header-background-color;
+  }
   #window-panel {
     flex-shrink: 0;
-    width: 60px;
+    height: 100%;
+    width: $window-panel-width;
+    display: flex;
+    -webkit-app-region: no-drag;
+    @include only-click;
+    div span{
+      @include vertical-center;
+    }
+  }
+  #window-search {
+    flex-shrink: 0;
+    height: 100%;
+    width: calc(80vw - #{$window-search-width});
+    div {
+      width: 100%;
+      -webkit-app-region: no-drag;
+      @include vertical-center;
+    }
   }
   #window-control {
     flex-shrink: 0;
-    width: 100px;
-  }
-  #window-control {
+    height: 100%;
+    width: $window-control-width;
     -webkit-app-region: no-drag;
+    @include only-click;
+    div:nth-child(1) {
+      margin-right: 25px;
+    }
+    div:nth-child(3) {
+      margin-left: 25px;
+    }
+    div {
+      height: 100%;
+      @include vertical-center;
+    }
   }
-  #window-control div:nth-child(1) {
-    margin-right: 25px;
+  .el-dropdown-link {
+    cursor: pointer;
+    // color: #409EFF;
   }
-  #window-control div:nth-child(3) {
-    margin-left: 25px;
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+  .demonstration {
+    display: block;
+    color: #8492a6;
+    font-size: 14px;
+    margin-bottom: 20px;
   }
   .square-icon {
+    // margin: auto;
     font-size: 10px;
     cursor: pointer;
-    vertical-align: -4px!important;
+    vertical-align: -6px!important;
   }
   #wrapper {
     background:
@@ -128,12 +194,6 @@ export default {
     margin-bottom: 20px;
     width: 420px;
   }
-  main {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  main > div { flex-basis: 50%; }
 
   .left-side {
     display: flex;

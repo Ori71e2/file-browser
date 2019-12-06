@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div  style="-webkit-app-region: drag" class="header">
-      <p>Welcome</p>
-    </div>
     <div id="wrapper">
       <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
       <main>
@@ -43,16 +40,6 @@ export default {
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body { font-family: 'Source Sans Pro', sans-serif; }
-
   #wrapper {
     background:
       radial-gradient(
@@ -70,16 +57,6 @@ export default {
     margin-bottom: 20px;
     width: 420px;
   }
-  .header {
-    height: 20px;
-    width: 100%;
-  }
-  main {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  main > div { flex-basis: 50%; }
 
   .left-side {
     display: flex;

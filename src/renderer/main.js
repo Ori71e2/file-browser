@@ -2,6 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 import '@/styles/index.scss' // global css
 
@@ -14,6 +15,10 @@ import './icons' // icon
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
+
+Vue.use(Element, {
+  size: 'medium' // set element-ui default size
+})
 
 /* eslint-disable no-new */
 new Vue({
