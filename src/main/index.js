@@ -126,7 +126,7 @@ function frameController(e, data) {
       break
   }
 }
-
+// 采用监听方式是考虑到双击也可以全屏的操作
 function addWindowListener() {
   // 添加全屏事件监听
   mainWindow.on('maximize', (e) => {

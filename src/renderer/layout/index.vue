@@ -6,7 +6,7 @@
       </div>
       <div id="window-control" class>
         <div v-on:click="onActionMenuClick('minimize')"><svg-icon class-name="square-icon" icon-class="minimize"></svg-icon></div>
-        <div v-on:click="onActionMenuClick('maximize')"><svg-icon class-name="square-icon" icon-class="maximize"></svg-icon></div>
+        <div v-on:click="onActionMenuClick('maximize')"><svg-icon class-name="square-icon" :icon-class="maximize"></svg-icon></div>
         <div v-on:click="onActionMenuClick('close')"><svg-icon class-name="square-icon" icon-class="close"></svg-icon></div>
       </div>
     </div>
@@ -30,8 +30,22 @@ import Message from '@/../utils/message.js'
 import { constants } from 'fs'
 export default {
   name: 'layout',
+  data() {
+    return {
+      isMaximize: false
+    }
+  },
   mounted() {
     this.addIpcListener()
+  },
+  computed: {
+    maximize() {
+      // 全屏图标选择与全屏状态应该是相反的
+      return !this.isMaximize ? 'maximize' : 'unmaximize'
+    },
+    key() {
+      return this.$route.path
+    }
   },
   methods: {
     onActionMenuClick(menuType) {
@@ -39,12 +53,13 @@ export default {
     },
     addIpcListener() {
       ipcRenderer.on('main-relpy', (e, { action, data }, arg) => {
-        console.log(action)
         if (action === 'maximize') {
           // 由于本人的项目使用了 vue 所以只进行了数据的修改。
           // 实际操作根据自己架构情况来实现
-          // this.maximizeMenu.name = data ? 'md-contract' : 'md-expand'
+          this.isMaximize = true
           console.log(action)
+        } else {
+          this.isMaximize = false
         }
       })
     }
@@ -52,7 +67,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
   * {
@@ -61,7 +76,6 @@ export default {
     padding: 0;
   }
 
-  body { font-family: 'Source Sans Pro', sans-serif; }
   #header {
     height: 30px;
     width: 100%;
