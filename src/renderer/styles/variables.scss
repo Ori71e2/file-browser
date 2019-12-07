@@ -1,3 +1,10 @@
+// layout size
+$header-height: 32px;
+$header-background-color: #DCDFE6;
+$window-panel-width: 400px;
+$window-control-width: 100px;
+$window-search-width: $window-panel-width + $window-control-width;
+
 // base color
 $blue:#324157;
 $light-blue:#3A71A8;

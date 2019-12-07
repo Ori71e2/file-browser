@@ -14,6 +14,8 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
+let height = 700
+let width = 1000
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -27,9 +29,11 @@ function initialize() {
      * Initial window options
      */
     mainWindow = new BrowserWindow({
-      height: 563,
+      height: height,
+      minHeight: height,
       useContentSize: true,
-      width: 1000,
+      width: width,
+      minWidth: width,
       frame: false,
       titleBarStyle: 'hidden',
       webPreferences: {

@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div id="header">
-      <div id="window-panel">
+    <div class="window-header">
+      <div class="window-header-panel">
+        <div><span><svg-icon class-name="star-icon" icon-class="star"></svg-icon></span></div>
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
@@ -27,16 +28,16 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-      <div id="window-search">
+      <div class="window-header-search">
         <el-input size="mini" placeholder="请输入内容" prefix-icon="el-icon-search" v-model="searchInput"></el-input>
       </div>
-      <div id="window-control" class>
+      <div class="window-header-control">
         <div v-on:click="onActionMenuClick('minimize')"><svg-icon class-name="square-icon" icon-class="minimize"></svg-icon></div>
         <div v-on:click="onActionMenuClick('maximize')"><svg-icon class-name="square-icon" :icon-class="maximize"></svg-icon></div>
         <div v-on:click="onActionMenuClick('close')"><svg-icon class-name="square-icon" icon-class="close"></svg-icon></div>
       </div>
     </div>
-    <div id="wrapper">
+    <div class="window-wrapper">
       <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
       <main>
         <div class="left-side">
@@ -96,68 +97,6 @@ export default {
 
 <style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-  $header-height: 32px;
-  $header-background-color: #DCDFE6;
-  $window-panel-width: 400px;
-  $window-control-width: 100px;
-  $window-search-width: $window-panel-width + $window-control-width;
-  @mixin only-click {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    user-select: none;
-  }
-  @mixin vertical-center {
-    position: relative;
-    display: inline-block;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  #header {
-    -webkit-app-region: drag;
-    height: $header-height;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: $header-background-color;
-  }
-  #window-panel {
-    flex-shrink: 0;
-    height: 100%;
-    width: $window-panel-width;
-    display: flex;
-    -webkit-app-region: no-drag;
-    @include only-click;
-    div span{
-      @include vertical-center;
-    }
-  }
-  #window-search {
-    flex-shrink: 0;
-    height: 100%;
-    width: calc(80vw - #{$window-search-width});
-    div {
-      width: 100%;
-      -webkit-app-region: no-drag;
-      @include vertical-center;
-    }
-  }
-  #window-control {
-    flex-shrink: 0;
-    height: 100%;
-    width: $window-control-width;
-    -webkit-app-region: no-drag;
-    @include only-click;
-    div:nth-child(1) {
-      margin-right: 25px;
-    }
-    div:nth-child(3) {
-      margin-left: 25px;
-    }
-    div {
-      height: 100%;
-      @include vertical-center;
-    }
-  }
   .el-dropdown-link {
     cursor: pointer;
     // color: #409EFF;
@@ -170,6 +109,12 @@ export default {
     color: #8492a6;
     font-size: 14px;
     margin-bottom: 20px;
+  }
+  .star-icon {
+    // margin: auto;
+    font-size: 24px;
+    cursor: pointer;
+    vertical-align: -10px!important;
   }
   .square-icon {
     // margin: auto;

@@ -1,0 +1,68 @@
+@mixin only-click {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+@mixin vertical-center {
+  position: relative;
+  display: inline-block;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.window-header {
+  -webkit-app-region: drag;
+  height: $header-height;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: $header-background-color;
+}
+.window-header-panel {
+  flex-shrink: 0;
+  height: 100%;
+  width: $window-panel-width;
+  display: flex;
+  -webkit-app-region: no-drag;
+  @include only-click;
+  div span{
+    @include vertical-center;
+  }
+  > div {
+    margin-left: 8px;
+    margin-right: 4px;
+  }
+}
+.window-header-search {
+  flex-shrink: 0;
+  height: 100%;
+  width: calc(80vw - #{$window-search-width});
+  div {
+    width: 100%;
+    -webkit-app-region: no-drag;
+    @include vertical-center;
+  }
+}
+.window-header-control {
+  flex-shrink: 0;
+  height: 100%;
+  width: $window-control-width;
+  -webkit-app-region: no-drag;
+  @include only-click;
+  div:nth-child(1) {
+    margin-right: 25px;
+  }
+  div:nth-child(3) {
+    margin-left: 25px;
+  }
+  div {
+    height: 100%;
+    @include vertical-center;
+  }
+}
+.window-wrapper {
+  height: calc(100vh - #{$header-height});
+  width: 100vw;
+}
+.window-wrapper-aside {
+  
+}
