@@ -38,15 +38,36 @@
       </div>
     </div>
     <div class="window-wrapper">
-      <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
-      <main>
-        <div class="left-side">
-          <span class="title">
-            Welcome to your new project!
-          </span>
-        </div>
+      <div class="window-wrapper-aside-a">
+        <span class="title">
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+          Welcome to your new project!
+        </span>
+      </div>
+      <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
-      </main>
+      </div>
     </div>
   </div>
 </template>

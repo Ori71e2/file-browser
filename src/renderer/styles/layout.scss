@@ -11,16 +11,16 @@
 }
 .window-header {
   -webkit-app-region: drag;
-  height: $header-height;
+  height: $headerHeight;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: $header-background-color;
+  background-color: $headerBbackgroundColor;
 }
 .window-header-panel {
   flex-shrink: 0;
   height: 100%;
-  width: $window-panel-width;
+  width: $windowPanelWidth;
   display: flex;
   -webkit-app-region: no-drag;
   @include only-click;
@@ -35,7 +35,7 @@
 .window-header-search {
   flex-shrink: 0;
   height: 100%;
-  width: calc(80vw - #{$window-search-width});
+  width: $windowSearchWidth;
   div {
     width: 100%;
     -webkit-app-region: no-drag;
@@ -45,7 +45,7 @@
 .window-header-control {
   flex-shrink: 0;
   height: 100%;
-  width: $window-control-width;
+  width: $windowControlWidth;
   -webkit-app-region: no-drag;
   @include only-click;
   div:nth-child(1) {
@@ -60,9 +60,18 @@
   }
 }
 .window-wrapper {
-  height: calc(100vh - #{$header-height});
-  width: 100vw;
+  height: $windowWrapperHeight;
+  width: $windowWrapperWidth;
 }
-.window-wrapper-aside {
-  
+.window-wrapper-aside-a {
+  height: $windowWrapperAsideAHeight;
+  width: $windowWrapperAsideAWidth;
+  padding: 2px;
+  overflow: auto;
+}
+.window-wrapper-aside-main {
+  height: $windowWrapperAsideAHeight;
+  width: $windowWrapperAsideAWidth;
+  padding: 2px;
+  overflow: auto;
 }

@@ -1,10 +1,18 @@
 // layout size
-$header-height: 32px;
-$header-background-color: #DCDFE6;
-$window-panel-width: 400px;
-$window-control-width: 100px;
-$window-search-width: $window-panel-width + $window-control-width;
+$headerHeight: 32px;
+$headerBbackgroundColor: #DCDFE6;
+$windowPanelWidth: 300px;
+$windowControlWidth: 100px;
+$windowSearchWidth: calc(80vw - #{$windowPanelWidth + $windowControlWidth});
 
+$windowWrapperWidth: 100vw;
+$windowWrapperHeight: calc(100vh - #{$headerHeight});
+
+$windowWrapperAsideAHeight: $windowWrapperHeight;
+$windowWrapperAsideAWidth: 200px;
+
+$windowWrapperAsideMainWidth: calc($windowWrapperWidth - #{$windowWrapperAsideAWidth});
+$windowWrapperAsideMainHeight: $windowWrapperHeight;
 // base color
 $blue:#324157;
 $light-blue:#3A71A8;
