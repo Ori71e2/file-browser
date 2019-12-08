@@ -39,31 +39,23 @@
     </div>
     <div class="window-wrapper">
       <div class="window-wrapper-aside-a">
-        <span class="title">
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-          Welcome to your new project!
-        </span>
+        <div class="aside-a-main">
+          <span class="title">
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+          </span>
+        </div>
+        <div class="aside-a-width-control col-rewsize-div-style" v-on:mousedown="handleOver($event)" v-on:mouseup="handleOver($event)"></div>
       </div>
       <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
@@ -75,7 +67,7 @@
 <script>
 import { ipcRenderer } from 'electron'
 import Message from '@/../utils/message.js'
-import { constants } from 'fs'
+import { constants, mkdir } from 'fs'
 export default {
   name: 'layout',
   data() {
@@ -111,6 +103,17 @@ export default {
           this.isMaximize = false
         }
       })
+    },
+    handleOver(e) {
+      switch (e.type) {
+        case 'mousedown':
+          console.log(e.type)
+          break
+        case 'mouseup':
+          console.log(e.type)
+          break
+        default:
+      }
     }
   }
 }
@@ -118,6 +121,16 @@ export default {
 
 <style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+  $colRewsizeDivWidth: 4px;
+  .aside-a-main {
+    height: 100%;
+    width: calc(100% - #{$colRewsizeDivWidth});
+    overflow: auto;
+  }
+  .aside-a-width-control {
+    height: 100%;
+    width: $colRewsizeDivWidth;
+  }
   .el-dropdown-link {
     cursor: pointer;
     // color: #409EFF;

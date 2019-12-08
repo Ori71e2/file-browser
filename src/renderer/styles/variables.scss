@@ -9,10 +9,12 @@ $windowWrapperWidth: 100vw;
 $windowWrapperHeight: calc(100vh - #{$headerHeight});
 
 $windowWrapperAsideAHeight: $windowWrapperHeight;
-$windowWrapperAsideAWidth: 200px;
+$windowWrapperAsideAWidth: 300px;
 
 $windowWrapperAsideMainWidth: calc($windowWrapperWidth - #{$windowWrapperAsideAWidth});
 $windowWrapperAsideMainHeight: $windowWrapperHeight;
+
+$colRewsizeDivBorderColor: #DCDFE6;
 // base color
 $blue:#324157;
 $light-blue:#3A71A8;

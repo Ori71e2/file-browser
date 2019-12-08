@@ -62,16 +62,24 @@
 .window-wrapper {
   height: $windowWrapperHeight;
   width: $windowWrapperWidth;
+  display: flex;
 }
 .window-wrapper-aside-a {
   height: $windowWrapperAsideAHeight;
   width: $windowWrapperAsideAWidth;
-  padding: 2px;
-  overflow: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
 }
 .window-wrapper-aside-main {
   height: $windowWrapperAsideAHeight;
   width: $windowWrapperAsideAWidth;
+  position: relative;
+  overflow: hidden;
   padding: 2px;
-  overflow: auto;
+}
+
+.col-rewsize-div-style {
+  border: 1px solid $colRewsizeDivBorderColor;
+  cursor: col-resize;
 }

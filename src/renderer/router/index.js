@@ -10,17 +10,13 @@ export default new Router({
     //   path: '/',
     //   component: require('@/layout/index').default
     // },
-    // {
-    //   path: '/',
-    //   name: 'landing-page',
-    //   component: require('@/components/LandingPage').default
-    // },
     {
       path: '/',
       component: Layout,
+      redirect: 'test',
       children: [
         {
-          path: 'index',
+          path: 'test',
           component: () => import('@/views/test/index'),
           name: 'Test',
           meta: { title: 'Test', icon: 'test', affix: true }
