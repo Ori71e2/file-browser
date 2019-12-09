@@ -38,9 +38,23 @@
       </div>
     </div>
     <div class="window-wrapper">
-      <div class="window-wrapper-aside-a">
-        <div class="aside-a-main">
+      <div class="window-wrapper-aside">
+      </div>
+      <div class="window-wrapper-nav">
+        <div>
           <span class="title">
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
+            Welcome to your new project!
             Welcome to your new project!
             Welcome to your new project!
             Welcome to your new project!
@@ -55,11 +69,13 @@
             Welcome to your new project!
           </span>
         </div>
-        <div class="aside-a-width-control col-rewsize-div-style" v-on:mousedown="handleOver($event)" v-on:mouseup="handleOver($event)"></div>
+        <div class="col-rewsize-div-style" v-on:mousedown="handleOver($event)" v-on:mouseup="handleOver($event)"></div>
       </div>
       <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
       </div>
+    </div>
+    <div class="window-footer">
     </div>
   </div>
 </template>
@@ -121,16 +137,6 @@ export default {
 
 <style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-  $colRewsizeDivWidth: 4px;
-  .aside-a-main {
-    height: 100%;
-    width: calc(100% - #{$colRewsizeDivWidth});
-    overflow: auto;
-  }
-  .aside-a-width-control {
-    height: 100%;
-    width: $colRewsizeDivWidth;
-  }
   .el-dropdown-link {
     cursor: pointer;
     // color: #409EFF;

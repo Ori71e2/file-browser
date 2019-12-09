@@ -64,22 +64,43 @@
   width: $windowWrapperWidth;
   display: flex;
 }
-.window-wrapper-aside-a {
-  height: $windowWrapperAsideAHeight;
-  width: $windowWrapperAsideAWidth;
+.window-wrapper-aside {
+  height: 100%;
+  width: 40px;
+  flex-grow: 0;
+  flex-shrink: 0;
   position: relative;
   overflow: hidden;
   display: flex;
 }
-.window-wrapper-aside-main {
-  height: $windowWrapperAsideAHeight;
-  width: $windowWrapperAsideAWidth;
+.window-wrapper-nav {
+  height: 100%;
+  width: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
   position: relative;
-  overflow: hidden;
-  padding: 2px;
+  display: flex;
+  :first-child{
+    height: 100%;
+    width: calc(100% - #{$colRewsizeDivWidth});
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+    overflow: auto;
+    padding: 2px;
+  }
 }
 
 .col-rewsize-div-style {
+  height: 100%;
+  width: $colRewsizeDivWidth;
+  flex-grow: 0;
+  flex-shrink: 0;
   border: 1px solid $colRewsizeDivBorderColor;
   cursor: col-resize;
+}
+.window-footer {
+  height: $windowFooterHeight;
+  width: $windowFooterWidth;
+  overflow: hidden;
 }

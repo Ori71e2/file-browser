@@ -1,20 +1,17 @@
 // layout size
 $headerHeight: 32px;
+$windowFooterHeight: 10px;
+$windowFooterWidth: 100vw;
 $headerBbackgroundColor: #DCDFE6;
 $windowPanelWidth: 300px;
 $windowControlWidth: 100px;
 $windowSearchWidth: calc(80vw - #{$windowPanelWidth + $windowControlWidth});
 
 $windowWrapperWidth: 100vw;
-$windowWrapperHeight: calc(100vh - #{$headerHeight});
-
-$windowWrapperAsideAHeight: $windowWrapperHeight;
-$windowWrapperAsideAWidth: 300px;
-
-$windowWrapperAsideMainWidth: calc($windowWrapperWidth - #{$windowWrapperAsideAWidth});
-$windowWrapperAsideMainHeight: $windowWrapperHeight;
+$windowWrapperHeight: calc(100vh - #{$headerHeight + $windowFooterHeight});
 
 $colRewsizeDivBorderColor: #DCDFE6;
+$colRewsizeDivWidth: 1px;
 // base color
 $blue:#324157;
 $light-blue:#3A71A8;
