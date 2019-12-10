@@ -69,7 +69,8 @@
             Welcome to your new project!
           </span>
         </div>
-        <div class="col-rewsize-div-style" v-on:mousedown="handleOver($event)" v-on:mouseup="handleOver($event)"></div>
+        <!-- <div class="col-rewsize-div-style" v-on:mousedown="handleOver($event)" v-on:mouseup="handleOver($event)"></div> -->
+        <div class="col-rewsize-div-style" v-dragWidth></div>
       </div>
       <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
