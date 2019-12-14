@@ -4,46 +4,55 @@ Vue.directive('DragWidth', {
     let basedisX
     let baseWidth
     let enableDragWidth = false
+    let flag = false
     console.log(vnode)
     /**
      * 仅在移动情况下判断鼠标样式
      */
-    el.addEventListener('mousemove', mouseMoveBeforeDown)
+    el.addEventListener('mousemove', divMouseMove)
     /**
      * 鼠标按下，判断是否进入拖拽
      */
-    el.addEventListener('mousedown', (e) => {
+    el.addEventListener('mousedown', divMouseDown)
+    /**
+     * div 鼠标按下
+     */
+    function divMouseDown(e) {
       /**
        * 设置基准数值，只需在此处更新
        */
       basedisX = e.clientX
       baseWidth = el.offsetWidth
       if (enableDragWidth) {
-        el.removeEventListener('mousemove', mouseMoveBeforeDown)
-        document.addEventListener('mousemove', mouseMoveAfterDown)
+        el.removeEventListener('mousemove', divMouseMove)
+        document.addEventListener('mousemove', documentMouseMove)
+        flag = true
       }
-    })
-    document.addEventListener('mouseup', (e) => {
-      if (enableDragWidth) {
-        console.log('1')
-        document.removeEventListener('mousemove', mouseMoveAfterDown)
-        el.addEventListener('mousemove', mouseMoveBeforeDown)
-      }
-    })
-    function mouseMoveBeforeDown(e) {
+      document.addEventListener('mouseup', documentMouseUp)
+    }
+    /**
+     * 在div内移动，判断是否处于div边界处，处于边界时改变鼠标样式
+     * 该处逻辑独立，不受鼠标按下或起影响
+     */
+    function divMouseMove(e) {
       let cursor = el.offsetWidth + el.offsetLeft - e.clientX - 3
       /**
        * 在body页面上设置cursor样式，在div上设置有鼠标样式频繁切换bug
        */
-      if (cursor <= 0) {
-        document.body.style.cursor = 'col-resize'
+      if (cursor <= 0 && cursor > -3) {
+        el.style.cursor = 'col-resize'
+        // el.style.cursor = 'col-resize'
         enableDragWidth = true
       } else {
-        document.body.style.cursor = 'default'
+        el.style.cursor = 'default'
+        // el.style.cursor = 'default'
         enableDragWidth = false
       }
     }
-    function mouseMoveAfterDown(e) {
+    /**
+     * 只负责修改div宽
+     */
+    function documentMouseMove(e) {
       e.preventDefault()
       let moveLength = e.clientX - basedisX
       let width = baseWidth + moveLength
@@ -51,6 +60,18 @@ Vue.directive('DragWidth', {
       console.log(moveLength)
       console.log(baseWidth)
       el.style.width = `${width}px`
+      document.body.style.cursor = 'col-resize'
+    }
+    function documentMouseUp(e) {
+      if (enableDragWidth && flag) {
+        console.log('1')
+        document.removeEventListener('mousemove', documentMouseMove)
+        el.addEventListener('mousemove', divMouseMove)
+        flag = false
+        divMouseMove(e)
+      }
+      document.body.style.cursor = 'default'
+      document.removeEventListener('mouseup', documentMouseUp)
     }
   }
 })
