@@ -40,7 +40,7 @@
     <div class="window-wrapper">
       <div class="window-wrapper-aside">
       </div>
-      <div class="window-wrapper-nav" ref="drag" v-on:mousemove="test" v-dragWidth>
+      <div class="window-wrapper-nav" v-dragWidth>
         <div>
           <span class="title">
             Welcome to your new project!
@@ -69,7 +69,6 @@
             Welcome to your new project!
           </span>
         </div>
-        <div class="col-rewsize-div-style"></div>
       </div>
       <div class="window-wrapper-nav" v-dragWidth>
         <div>
@@ -100,7 +99,6 @@
             Welcome to your new project!
           </span>
         </div>
-        <div class="col-rewsize-div-style"></div>
       </div>
       <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
@@ -137,7 +135,7 @@ export default {
   },
   methods: {
     test(el) {
-      // console.log(el)
+      console.log(el)
     },
     onActionMenuClick(menuType) {
       ipcRenderer.send('main', new Message('frameController', menuType))
