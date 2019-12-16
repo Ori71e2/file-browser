@@ -9,6 +9,7 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .window-header {
   -webkit-app-region: drag;
   height: $headerHeight;
@@ -72,6 +73,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
+  background-color: $windowWrapperAside;
 }
 .window-wrapper-nav {
   height: 100%;
@@ -80,6 +82,8 @@
   flex-shrink: 0;
   position: relative;
   display: flex;
+  background-color: $windowWrapperNav;
+  border-color: $windowWrapperNav;
   :first-child{
     height: 100%;
     width: calc(100% - #{$colRewsizeDivWidth});
@@ -87,6 +91,7 @@
     flex-shrink: 0;
     position: relative;
     overflow: auto;
+    @include scroll($windowWrapperNav, #F2F6FC, #C0C0C0);
     padding: 2px;
   }
 }
