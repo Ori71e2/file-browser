@@ -60,13 +60,6 @@
             Welcome to your new project!
             Welcome to your new project!
             Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
           </span>
         </div>
       </div>

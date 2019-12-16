@@ -9,6 +9,7 @@ Vue.directive('DragWidth', {
     /**
      * 仅在移动情况下判断鼠标样式
      */
+    el.style.paddingRight = '2px'
     el.addEventListener('mousemove', divMouseMove)
     /**
      * 鼠标按下，判断是否进入拖拽
