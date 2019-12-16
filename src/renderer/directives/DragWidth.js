@@ -26,11 +26,9 @@ Vue.directive('DragWidth', {
        */
       if (cursor <= 0 && cursor > detectionRange) {
         el.style.cursor = 'col-resize'
-        // el.style.cursor = 'col-resize'
         enableDragWidth = true
       } else {
         el.style.cursor = 'default'
-        // el.style.cursor = 'default'
         enableDragWidth = false
       }
     }
@@ -49,8 +47,6 @@ Vue.directive('DragWidth', {
          */
         el.removeEventListener('mousemove', divMouseMove)
         document.addEventListener('mousemove', documentMouseMove)
-        // document.body.style.zIndex = 99999
-        // document.body.style.cursor = 'col-resize'
       }
       /**
        * 添加document mouseup，仅执行一次
@@ -64,9 +60,6 @@ Vue.directive('DragWidth', {
       e.preventDefault()
       let moveLength = e.clientX - basedisX
       let width = baseWidth + moveLength
-      // console.log(width)
-      // console.log(moveLength)
-      // console.log(baseWidth)
       el.style.width = `${width}px`
       // console.log(el.parentElement)
       /**
@@ -79,16 +72,12 @@ Vue.directive('DragWidth', {
      * 仅运行一次
      */
     function documentMouseUp(e) {
-      if (enableDragWidth) {
-        el.parentElement.style.pointerEvents = 'auto'
-        console.log('1')
-        /**
-         * 移除document mousemove，添加div mousemove
-         */
-        document.removeEventListener('mousemove', documentMouseMove)
-        el.addEventListener('mousemove', divMouseMove)
-        divMouseMove(e)
-      }
+      el.parentElement.style.pointerEvents = 'auto'
+      /**
+       * 移除document mousemove，添加div mousemove
+       */
+      document.removeEventListener('mousemove', documentMouseMove)
+      el.addEventListener('mousemove', divMouseMove)
       document.body.style.cursor = 'default'
       /**
        * 移除document mouseup，确保只执行一次
