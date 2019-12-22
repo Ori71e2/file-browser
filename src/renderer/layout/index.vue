@@ -64,34 +64,7 @@
         </div>
       </div>
       <div class="window-wrapper-nav" v-dragWidth>
-        <div>
-          <span class="title">
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-          </span>
-        </div>
+        <file-display></file-display>
       </div>
       <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
@@ -106,8 +79,10 @@
 import { ipcRenderer } from 'electron'
 import Message from '@/../utils/message.js'
 import { constants, mkdir } from 'fs'
+import fileDisplay from './fileDisplay'
 export default {
   name: 'layout',
+  components: { fileDisplay },
   data() {
     return {
       isMaximize: false,
@@ -131,7 +106,7 @@ export default {
       console.log(el)
     },
     onActionMenuClick(menuType) {
-      ipcRenderer.send('frame-controller', new Message('frameController', menuType))
+      ipcRenderer.send('frame-controller', new Message(menuType, ''))
     },
     addIpcListener() {
       ipcRenderer.on('frame-controller-relpy', (e, { action, data }, arg) => {

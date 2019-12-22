@@ -75,8 +75,13 @@ function makeSingleInstance () {
 }
 
 function loadMainJs () {
-  const files = glob.sync(path.join(__dirname, 'src/main/**/*.js'))
-  files.forEach((file) => { require(file) })
+  // console.log('load main js')
+  // const files = glob.sync(path.join(__dirname, './components/**/*.js'))
+  // files.forEach((file) => {
+  //   console.log('.' + file.replace(__dirname, ''))
+  //   require('.' + file.replace(__dirname, ''))
+  // })
+  require('./components/index')
 }
 
 function createWindow() {
@@ -107,14 +112,12 @@ function createWindow() {
 
 function addIpcListener() {
   ipcMain.on('frame-controller', (e, { action, data }, arg) => {
-    if (action === 'frameController') {
-      frameController(e, data)
-    }
+    frameController(e, action)
   })
 }
 
-function frameController(e, data) {
-  switch (data) {
+function frameController(e, action) {
+  switch (action) {
     case 'minimize':
       mainWindow.minimize()
       break

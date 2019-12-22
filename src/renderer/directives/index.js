@@ -1,1 +1,1 @@
-import './DragWidth'
+import './dragWidth'

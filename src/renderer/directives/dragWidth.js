@@ -5,7 +5,7 @@ Vue.directive('DragWidth', {
     let baseWidth
     let enableDragWidth = false
     let detectionRange = -2
-    console.log(vnode)
+    // console.log(vnode)
     /**
      * 仅在移动情况下判断鼠标样式
      */
