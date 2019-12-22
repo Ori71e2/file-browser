@@ -22,33 +22,10 @@ const winURL = process.env.NODE_ENV === 'development'
 function initialize() {
   makeSingleInstance()
   // addWindowListener()
+  /**
+   * 加载所有后台js文件
+   */
   loadMainJs()
-
-  function createWindow() {
-    /**
-     * Initial window options
-     */
-    mainWindow = new BrowserWindow({
-      height: height,
-      minHeight: height,
-      useContentSize: true,
-      width: width,
-      minWidth: width,
-      frame: false,
-      titleBarStyle: 'hidden',
-      webPreferences: {
-        nodeIntegration: true // add this，因为electron自5.0后默认不允许在web页面中使用中nodejs API，本项目模板中使用了nodejs API，页面会白屏
-      }
-    })
-    mainWindow.show()
-    mainWindow.loadURL(winURL)
-
-    addIpcListener()
-    addWindowListener()
-    mainWindow.on('closed', () => {
-      mainWindow = null
-    })
-  }
 
   app.on('ready', createWindow)
 
@@ -102,8 +79,34 @@ function loadMainJs () {
   files.forEach((file) => { require(file) })
 }
 
+function createWindow() {
+  /**
+   * Initial window options
+   */
+  mainWindow = new BrowserWindow({
+    height: height,
+    minHeight: height,
+    useContentSize: true,
+    width: width,
+    minWidth: width,
+    frame: false,
+    titleBarStyle: 'hidden',
+    webPreferences: {
+      nodeIntegration: true // add this，因为electron自5.0后默认不允许在web页面中使用中nodejs API，本项目模板中使用了nodejs API，页面会白屏
+    }
+  })
+  mainWindow.show()
+  mainWindow.loadURL(winURL)
+
+  addIpcListener()
+  addWindowListener()
+  mainWindow.on('closed', () => {
+    mainWindow = null
+  })
+}
+
 function addIpcListener() {
-  ipcMain.on('main', (e, { action, data }, arg) => {
+  ipcMain.on('frame-controller', (e, { action, data }, arg) => {
     if (action === 'frameController') {
       frameController(e, data)
     }
@@ -130,17 +133,19 @@ function frameController(e, data) {
       break
   }
 }
-// 采用监听方式是考虑到双击也可以全屏的操作
+/**
+ * 采用监听方式是考虑到双击也可以全屏的操作
+ */
 function addWindowListener() {
   // 添加全屏事件监听
   mainWindow.on('maximize', (e) => {
     console.log('maxmize')
-    e.sender.send('main-relpy', new Message('maximize', true))
+    e.sender.send('frame-controller-relpy', new Message('maximize', true))
   })
   // 添加还原全屏事件监听
   mainWindow.on('unmaximize', (e) => {
     console.log('unmaxmize')
-    e.sender.send('main-relpy', new Message('unmaxmize', false))
+    e.sender.send('frame-controller-relpy', new Message('unmaxmize', false))
   })
 }
 initialize()
