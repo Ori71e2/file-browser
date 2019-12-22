@@ -24,10 +24,8 @@ export default {
       ipcRenderer.send('file-browser', new Message(menuType, ''))
     },
     addIpcListener() {
-      console.log('xx')
-      ipcRenderer.on('file-browser-replpy', (e, { action, data }, arg) => {
-        console.log(data)
-        console.log('xx')
+      ipcRenderer.on('file-browser-reply', (e, { action, data }) => {
+        console.log('data: ' + data)
         // if (action === 'maximize') {
         //   this.isMaximize = true
         //   console.log(action)

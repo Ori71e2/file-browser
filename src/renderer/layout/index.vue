@@ -109,7 +109,7 @@ export default {
       ipcRenderer.send('frame-controller', new Message(menuType, ''))
     },
     addIpcListener() {
-      ipcRenderer.on('frame-controller-relpy', (e, { action, data }, arg) => {
+      ipcRenderer.on('frame-controller-relpy', (e, { action, data }) => {
         if (action === 'maximize') {
           this.isMaximize = true
           console.log(action)

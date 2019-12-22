@@ -1,11 +1,12 @@
 import { ipcMain } from 'electron'
 import Message from '@/../utils/message.js'
-
-console.log('xxxxxxxxx')
+const path = require('path')
 function addIpcListener() {
-  ipcMain.on('file-browser', (e, { action, data }, arg) => {
+  ipcMain.on('file-browser', (e, { action, data }) => {
+    const appDir = process.execPath
     if (action === 'getFiles') {
-      e.sender.send('file-browser-replay', new Message('xx', 'xx'))
+      // console.log('xxxxxxxxxx')
+      e.reply('file-browser-reply', new Message(appDir, appDir))
     }
   })
 }

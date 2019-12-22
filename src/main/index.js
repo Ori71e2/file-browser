@@ -111,7 +111,7 @@ function createWindow() {
 }
 
 function addIpcListener() {
-  ipcMain.on('frame-controller', (e, { action, data }, arg) => {
+  ipcMain.on('frame-controller', (e, { action, data }) => {
     frameController(e, action)
   })
 }
@@ -142,12 +142,12 @@ function frameController(e, action) {
 function addWindowListener() {
   // 添加全屏事件监听
   mainWindow.on('maximize', (e) => {
-    console.log('maxmize')
+    // console.log('maxmize')
     e.sender.send('frame-controller-relpy', new Message('maximize', true))
   })
   // 添加还原全屏事件监听
   mainWindow.on('unmaximize', (e) => {
-    console.log('unmaxmize')
+    // console.log('unmaxmize')
     e.sender.send('frame-controller-relpy', new Message('unmaxmize', false))
   })
 }

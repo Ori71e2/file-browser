@@ -54,5 +54,6 @@ module.exports = {
     //   "for": {"after": false},
     //   "while": {"after": false}
     // }}]
+    "no-console": "off"
   }
 }
