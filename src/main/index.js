@@ -100,6 +100,7 @@ function createWindow() {
       nodeIntegration: true // add this，因为electron自5.0后默认不允许在web页面中使用中nodejs API，本项目模板中使用了nodejs API，页面会白屏
     }
   })
+  global.mainGlobalMianWindow = mainWindow
   mainWindow.show()
   mainWindow.loadURL(winURL)
 

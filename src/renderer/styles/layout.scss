@@ -81,14 +81,11 @@
   flex-grow: 0;
   flex-shrink: 0;
   position: relative;
-  display: flex;
   background-color: $windowWrapperNav;
   border-color: $windowWrapperNav;
   :first-child{
     height: 100%;
     width: calc(100% - #{$colRewsizeDivWidth});
-    flex-grow: 0;
-    flex-shrink: 0;
     position: relative;
     overflow: auto;
     @include scroll($windowWrapperNav, #F2F6FC, #C0C0C0);
