@@ -1,6 +1,6 @@
 
-export default class MainGlobal {
-  constructor(mainWindow) {
-    // MainGlobal.mainWindow = mainWindow
-  }
-}
+// export default class MainGlobal {
+//   constructor(mainWindow) {
+//     // MainGlobal.mainWindow = mainWindow
+//   }
+// }

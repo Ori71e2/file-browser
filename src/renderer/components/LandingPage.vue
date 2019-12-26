@@ -74,7 +74,6 @@ export default {
     width: 420px;
   }
 
-
   .left-side {
     display: flex;
     flex-direction: column;
