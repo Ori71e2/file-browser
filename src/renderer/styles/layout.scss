@@ -83,14 +83,17 @@
   position: relative;
   background-color: $windowWrapperNav;
   border-color: $windowWrapperNav;
-  :first-child{
-    height: 100%;
-    width: calc(100% - #{$colRewsizeDivWidth});
-    position: relative;
-    overflow: auto;
-    @include scroll($windowWrapperNav, #F2F6FC, #C0C0C0);
-    padding: 2px;
-  }
+  overflow: hidden;
+  // :first-child{
+  //   height: 100%;
+  //   // width: calc(100% - #{$colRewsizeDivWidth});
+  //   width: 100%;
+  //   // position: relative;
+  //   // overflow: hidden;
+  //   @include scroll($windowWrapperNav, #F2F6FC, #C0C0C0);
+  // }
+  @include scroll($windowWrapperNav, #F2F6FC, #C0C0C0);
+  // padding: 2px;
 }
 
 .window-footer {
