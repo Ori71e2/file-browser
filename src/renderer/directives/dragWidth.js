@@ -8,8 +8,9 @@ Vue.directive('DragWidth', {
     // console.log(vnode)
     /**
      * 仅在移动情况下判断鼠标样式
+     * 要有空白期，否则出现滚动条时，div的mouseover会被屏蔽
      */
-    el.style.paddingRight = '2px'
+    el.style.paddingRight = '1px'
     el.addEventListener('mousemove', divMouseMove)
     /**
      * 鼠标按下，判断是否进入拖拽

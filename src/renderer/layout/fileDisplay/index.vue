@@ -39,7 +39,7 @@ export default {
   data() {
     const data = [{
       id: 1,
-      label: '一级 1',
+      label: '一级 111111111111111111111111111111111111111',
       children: [{
         id: 4,
         label: '二级 1-1',
@@ -122,6 +122,14 @@ export default {
   width: 100%;
   height: 100%;
   overflow: auto;
+  & div {
+    // 在父级div宽度较小时，子级div自动撑开内容，且显示滚动条
+    // 在父级div宽度较大且能完全容纳子级div时，子级div宽度与父级一致
+    display: inline-block;
+    min-width: 100%;
+    // height: 100%;
+    min-height: 100%;
+  }
 }
 .custom-tree-node {
   width: 100%;
