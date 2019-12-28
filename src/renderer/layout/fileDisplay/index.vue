@@ -1,6 +1,7 @@
 <template>
   <div class="custom-tree-container">
-    <div>
+    <div>{{ pathInfo }}</div>
+    <!-- <div>
       <el-tree
         :data="data"
         show-checkbox
@@ -25,7 +26,7 @@
           </span>
         </span>
       </el-tree>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -101,6 +102,9 @@ export default {
       })
     },
     append(data) {
+      /**
+      *无需担心id溢出，足够使用
+      */
       const newChild = { id: id++, label: 'testtest', children: [] }
       if (!data.children) {
         this.$set(data, 'children', [])
