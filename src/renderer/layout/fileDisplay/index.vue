@@ -1,7 +1,7 @@
 <template>
   <div class="custom-tree-container">
-    <div>{{ pathInfo }}</div>
-    <!-- <div>
+    <!-- <div>{{ pathInfo }}</div> -->
+    <div>
       <el-tree
         :data="data"
         show-checkbox
@@ -26,7 +26,7 @@
           </span>
         </span>
       </el-tree>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
   name: 'file-browser',
   data() {
     const data = [{
-      id: 1,
+      id: 111,
       label: '一级 111111111111111111111111111111111111111',
       children: [{
         id: 4,
@@ -81,6 +81,40 @@ export default {
   mounted() {
     this.addIpcListener()
     this.fileBrowser('getFiles')
+    const data2 = [{
+      id: 122,
+      label: '一级 2',
+      children: [{
+        id: 5,
+        label: '二级 2-1'
+      }, {
+        id: 6,
+        label: '二级 2-2'
+      }]
+    }, {
+      id: 3,
+      label: '一级 3',
+      children: [{
+        id: 7,
+        label: '二级 3-1'
+      }, {
+        id: 8,
+        label: '二级 3-2'
+      }]
+    }, {
+      id: 20,
+      label: '一级 4',
+      children: [{
+        id: 7,
+        label: '二级 4-1'
+      }, {
+        id: 8,
+        label: '二级 4-2'
+      }]
+    }]
+    setTimeout(() => {
+      this.data = data2
+    }, 3000)
   },
   computed: {
   },

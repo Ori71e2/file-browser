@@ -10,4 +10,10 @@ close&keep => children深度二级起步，存在孙节点，
 expand
 reduce
 
-二叉树
+数据实现的有序多叉树，数组元素为json对象
+
+renderer删除或移动文件等 => js操作文件 => watch被调用 => main更新多叉树 => 数据反馈到renderer中
+renderer展开数据 => 反馈展开状态到main中，同步更新状态
+非本程序导致文件变化 => main watch更新多叉树 => 反馈至renderer中
+
+vue 自带数据diff算法，不用自己进行diff数据
