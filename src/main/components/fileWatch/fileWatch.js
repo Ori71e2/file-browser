@@ -5,16 +5,39 @@ import { Node, MultiwayTree } from './multiwayTree.js'
 const os = require('os')
 const path = require('path')
 const fs = require('fs')
+const AsyncLock = require('async-lock')
+const lock = new AsyncLock()
 
 let platform = os.platform()
 let id = 0
-let fileBrowser = null
+let fileBrowserTree = null
 
 function fileBrowserInit() {
-  fileBrowser = new MultiwayTree()
+  fileBrowserTree = new MultiwayTree()
   if (platform === 'linux') {
-    fileBrowser.add(new Node(0, '/', addFileWatcher('/')))
-
+    lock.acquire(fileBrowserTree, () => {
+      // return value or promise
+      fileBrowserTree.add(new Node(0, '/', addFileWatcher('/')))
+      return fileBrowserTree
+    }, opts).then(function() {
+      // lock released
+    })
+    let pathName = '/'
+    fs.readdir(pathName, function(err, files){
+        let dirs = []
+        (function iterator(i){
+          if(i == files.length) {
+            // console.log(dirs)
+            return
+          }
+          fs.stat(path.join(pathName, files[i]), function(err, data){  
+            if(data.isDirectory()){
+                dirs.push(files[i])
+            }
+            iterator(i+1)
+          })
+        })(0)
+    })
   }
 }
 function addFileWatch() {
@@ -34,7 +57,6 @@ function addFileWatcher(filename) {
          * 此处必须捕获异常，否则当页面被销毁，此处未销毁，会报错。
          * 可以在页面销毁时，同步销毁此处。但是无法获知是否还有其它处监听，用捕获异常来的方便
          */
-        
         try {
           e.reply('file-browser-reply', new Message(fileBrowser, fileBrowser))
         } catch (err) {
