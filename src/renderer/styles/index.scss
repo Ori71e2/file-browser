@@ -13,6 +13,7 @@ body {
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
   margin: 0px;
+  overflow: hidden;
 }
 
 label {
@@ -38,9 +39,9 @@ html {
   padding: 0px !important;
 }
 
-.padding-content {
-  padding: 4px 0;
-}
+// .padding-content {
+//   padding: 4px 0;
+// }
 
 a:focus,
 a:active {

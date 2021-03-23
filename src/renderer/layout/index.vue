@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="window">
     <div class="window-header">
       <div class="window-header-panel">
         <div><span><svg-icon class-name="star-icon" icon-class="star"></svg-icon></span></div>

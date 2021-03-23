@@ -1,13 +1,13 @@
 // layout size
 $headerHeight: 32px;
 $windowFooterHeight: 10px;
-$windowFooterWidth: 100vw;
+$windowFooterWidth: 100%;
 $headerBbackgroundColor: #DCDFE6;
 $windowPanelWidth: 300px;
 $windowControlWidth: 100px;
 $windowSearchWidth: calc(80vw - #{$windowPanelWidth + $windowControlWidth});
 
-$windowWrapperWidth: 100vw;
+$windowWrapperWidth: 100%;
 $windowWrapperHeight: calc(100vh - #{$headerHeight + $windowFooterHeight});
 
 $windowWrapperAside: #E4E7ED;

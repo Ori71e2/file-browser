@@ -13,14 +13,54 @@ export default new Router({
     {
       path: '/',
       component: Layout,
-      redirect: 'test',
+      redirect: 'map'
+      // children: [
+      //   {
+      //     path: 'map',
+      //     component: () => import('@/views/map/index'),
+      //     name: 'Map',
+      //     meta: { title: 'Map', icon: 'Map', affix: true }
+      //   }
+      // ]
+    },
+    {
+      path: '/map',
+      component: Layout,
+      redirect: '/map/main-map',
+      name: 'Map',
+      alwaysShow: true,
+      meta: {
+        title: 'Map',
+        icon: 'map'
+      },
       children: [
         {
-          path: 'test',
-          component: () => import('@/views/test/index'),
-          name: 'Test',
-          meta: { title: 'Test', icon: 'test', affix: true }
+          path: 'main-map',
+          component: () => import('@/views/map/mainMap'),
+          name: 'MainMap',
+          meta: {
+            title: 'mainMap',
+            icon: 'map'
+          }
         }
+        // {
+        //   path: 'test',
+        //   component: () => import('@/views/map/test'),
+        //   name: 'test',
+        //   meta: {
+        //     title: 'test',
+        //     icon: 'map'
+        //   }
+        // },
+        // {
+        //   path: 'test2',
+        //   component: () => import('@/views/map/test2'),
+        //   name: 'test2',
+        //   meta: {
+        //     title: 'test2',
+        //     icon: 'map'
+        //   }
+        // }
       ]
     },
     {
