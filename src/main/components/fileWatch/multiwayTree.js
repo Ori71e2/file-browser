@@ -14,12 +14,12 @@ class MultiwayTree {
   }
   // 深度优先遍历
   traverseDF(callback) {
-    let stack = [],
-    found = false
+    let stack = []
+    let found = false
     stack.unshift(this._root)
     let currentNode = stack.shift()
-    while(!found && currentNode) {
-      found = callback(currentNode) === true ? true : false
+    while (!found && currentNode) {
+      found = callback(currentNode) === true
       if (!found) {
         stack.unshift(...currentNode.children)
         currentNode = stack.shift()
@@ -28,11 +28,11 @@ class MultiwayTree {
   }
   // 广度优先遍历
   traverseBF(callback) {
-    let queue = [], found = false
+    let queue = []; let found = false
     queue.push(this._root)
     let currentNode = queue.shift()
-    while(!found && currentNode) {
-      found = callback(currentNode) === true ? true : false
+    while (!found && currentNode) {
+      found = callback(currentNode) === true
       if (!found) {
         queue.push(...currentNode.children)
         currentNode = queue.shift()

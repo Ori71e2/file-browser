@@ -11,7 +11,7 @@ const lock = new AsyncLock()
 let platform = os.platform()
 let id = 0
 let fileBrowserTree = null
-
+/* eslint-disable */
 function fileBrowserInit() {
   fileBrowserTree = new MultiwayTree()
   if (platform === 'linux') {
@@ -23,20 +23,20 @@ function fileBrowserInit() {
       // lock released
     })
     let pathName = '/'
-    fs.readdir(pathName, function(err, files){
-        let dirs = []
-        (function iterator(i){
-          if(i == files.length) {
-            // console.log(dirs)
-            return
+    fs.readdir(pathName, function(err, files) {
+      let dirs = []
+      (function iterator(i) {
+        if (i == files.length) {
+          // console.log(dirs)
+          return
+        }
+        fs.stat(path.join(pathName, files[i]), function(err, data) {
+          if (data.isDirectory()) {
+            dirs.push(files[i])
           }
-          fs.stat(path.join(pathName, files[i]), function(err, data){  
-            if(data.isDirectory()){
-                dirs.push(files[i])
-            }
-            iterator(i+1)
-          })
-        })(0)
+          iterator(i + 1)
+        })
+      })(0)
     })
   }
 }
@@ -51,19 +51,19 @@ function addFileWatcher(filename) {
   let appDir = os.homedir() + '/test'
   let watcher = null
   try {
-      watcher = fs.watch(filename, { persistent: true, recursive: false }, (eventType, filename) => {
-        /**
+    watcher = fs.watch(filename, { persistent: true, recursive: false }, (eventType, filename) => {
+      /**
          * 某些平台监视的是文件节点，在被监视的文件被删除时，节点仍在被监视，调用close彻底关闭监视。
          * 此处必须捕获异常，否则当页面被销毁，此处未销毁，会报错。
          * 可以在页面销毁时，同步销毁此处。但是无法获知是否还有其它处监听，用捕获异常来的方便
          */
-        try {
-          e.reply('file-browser-reply', new Message(fileBrowser, fileBrowser))
-        } catch (err) {
-          console.log('all renderer page has been destroyed!')
-          ipcMain.removeLinstener('file-browser', fileBrowserListener)
-        }
-      })
+      try {
+        e.reply('file-browser-reply', new Message(fileBrowser, fileBrowser))
+      } catch (err) {
+        console.log('all renderer page has been destroyed!')
+        ipcMain.removeLinstener('file-browser', fileBrowserListener)
+      }
+    })
   } catch (err) {
     /**
      * 1、若watch的文件不存在会报错。2、被监听的文件被删除，fs.wtach会触发回调。
