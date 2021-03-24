@@ -25,7 +25,7 @@ export default {
   methods: {
     setCurrentLocation(data) {
       const currentLocation = [data.position.getLng(), data.position.getLat()]
-      this.$store.dispatch('setCurrentLocation', currentLocation)
+      this.$store.dispatch('amap/setCurrentLocation', currentLocation)
       const info = data.info
       if (info === 'SUCCESS') {
         this.msg = 'GeoLocation Success!'

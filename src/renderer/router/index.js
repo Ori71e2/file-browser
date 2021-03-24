@@ -26,7 +26,7 @@ export default new Router({
     {
       path: '/map',
       component: Layout,
-      redirect: '/map/main-map',
+      redirect: '/map/index',
       name: 'Map',
       alwaysShow: true,
       meta: {
@@ -35,11 +35,11 @@ export default new Router({
       },
       children: [
         {
-          path: 'main-map',
-          component: () => import('@/views/map/mainMap'),
-          name: 'MainMap',
+          path: 'index',
+          component: () => import('@/views/map/index'),
+          name: 'index',
           meta: {
-            title: 'mainMap',
+            title: 'index',
             icon: 'map'
           }
         }

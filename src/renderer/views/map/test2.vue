@@ -41,16 +41,16 @@ export default {
         newMarkers.forEach((newM) => {
           console.log(this.markersMap)
           if (!this.markersMap.has(newM.id)) {
-            this.$store.dispatch('setMarkersMap', newM)
-            this.$store.dispatch('setMarkersMapAdd')
+            this.$store.dispatch('amap/setMarkersMap', newM)
+            this.$store.dispatch('amap/setMarkersMapAdd')
           } else {
             const newMModifyTime = new Date(newM.modifyTime)
             const mDodifyTime = new Date(this.markersMap.get(newM.id).modifyTime)
             // 测试用
             // if (newMModifyTime.getTime() >= mDodifyTime.getTime()) {
             if (newMModifyTime.getTime() > mDodifyTime.getTime()) {
-              this.$store.dispatch('setMarkersMap', newM)
-              this.$store.dispatch('setMarkersMapUpdate')
+              this.$store.dispatch('amap/setMarkersMap', newM)
+              this.$store.dispatch('amap/setMarkersMapUpdate')
             }
           }
         })

@@ -125,8 +125,8 @@ export default {
           // 设置markersMap
           const value = this.markersMap.get(id)
           value.position = position
-          this.$store.dispatch('setMarkersMap', value)
-          this.$store.dispatch('setMarkersMapUpdate')
+          this.$store.dispatch('amap/setMarkersMap', value)
+          this.$store.dispatch('amap/setMarkersMapUpdate')
         }
       }
       options.contentRender = (h, instance) => {

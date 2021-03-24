@@ -40,32 +40,18 @@
     <div class="window-wrapper">
       <div class="window-wrapper-aside">
       </div>
-      <div class="window-wrapper-nav" v-dragWidth>
+      <!-- <div class="window-wrapper-nav" v-dragWidth>
         <div>
           <span class="title">
             Welcome to your new project!
             Welcome to your new project!
             Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
-            Welcome to your new project!
           </span>
         </div>
-      </div>
-      <div class="window-wrapper-nav" v-dragWidth>
+      </div> -->
+      <!-- <div class="window-wrapper-nav" v-dragWidth>
         <file-display></file-display>
-      </div>
+      </div> -->
       <div class="window-wrapper-main">
         <router-view :key="key"></router-view>
       </div>
@@ -82,7 +68,7 @@ import { constants, mkdir } from 'fs'
 import fileDisplay from './fileDisplay'
 export default {
   name: 'layout',
-  components: { fileDisplay },
+  // components: { fileDisplay },
   data() {
     return {
       isMaximize: false,

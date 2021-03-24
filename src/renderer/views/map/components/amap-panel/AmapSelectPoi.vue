@@ -80,7 +80,7 @@ export default {
       })
     },
     toggleMove() {
-      this.$store.dispatch('setInitCenter', this.selectPosition)
+      this.$store.dispatch('amap/setInitCenter', this.selectPosition)
     }
   }
 }
